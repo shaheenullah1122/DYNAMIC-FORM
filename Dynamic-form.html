@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="./style.css" rel="stylesheet" />
+        <script src="./script.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        />
+
+        <style>
+            body {
+                background-color: rgb(224, 132, 99);
+            }
+            .container h1 {
+                display: flex;
+                justify-content: center;
+                color: #fff;
+                margin-top: 80px;
+                font-size: 16px;
+                padding-bottom: 2rem;
+            }
+
+            .main-div {
+                width: 80%;
+                background-color: azure;
+                margin: 0 auto;
+                padding-bottom: 5rem;
+                padding-top: 3rem;
+            }
+
+            .container .form-control {
+                width: 8rem;
+                border: 1px solid rgb(212, 212, 212);
+                margin-left: 5px;
+                transition: 0.4s linear;
+                font-size: 14px;
+            }
+
+            .container .form-control:focus {
+                box-shadow: 0 0 0;
+                border: none;
+            }
+
+            ::placeholder {
+                font-size: 11px;
+            }
+
+            .container .new {
+                margin-top: 40px;
+                margin-left: 50px;
+            }
+
+            .container .form-group {
+                margin-top: 40px;
+            }
+
+            label {
+                margin-left: 2rem;
+                font-size: 14px;
+            }
+
+            .btn-lg {
+                width: 6rem;
+                height: auto;
+                font-size: 13px;
+                border: none;
+                background-color: rgb(199, 255, 255);
+                transition: 0.3s linear;
+                margin-left: 5px;
+            }
+
+            .btn-lg:hover {
+                background-color: transparent;
+                box-shadow: 0 0 2px gray;
+                border-radius: 2px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Dynamically Add/Remove input fields</h1>
+            <div class="main-div">
+                <form class="form-inline" name="form">
+                    <label for="Name">Name:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Name Here..."
+                        id="name"
+                    />
+                    <label for="Degree">Degree:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Degree Title Here..."
+                        id="degree"
+                    />
+                    <label for="Cgpa">CGPA:</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="CGPA Here..."
+                        id="cgpa"
+                    />
+                </form>
+                <button class="btn-lg new" onclick="NewElement();">
+                    Add new
+                </button>
+            </div>
+        </div>
+
+        <script>
+            function NewElement() {
+                form();
+            }
+            function form() {
+                var div = document.createElement('div');
+                var labelname = document.createElement('LABEL');
+                var inputname = document.createElement('input');
+
+                var labeldegree = document.createElement('LABEL');
+                var inputdegree = document.createElement('input');
+
+                var labelcgpa = document.createElement('LABEL');
+                var inputcgpa = document.createElement('input');
+
+                var del = document.createElement('button');
+                del.className = 'btn-lg ';
+                del.addEventListener('click', delfun);
+                del.innerHTML = 'Remove';
+
+                labelname.innerHTML = 'Name:';
+                labeldegree.innerHTML = 'Degree:';
+                labelcgpa.innerHTML = 'CGPA:';
+
+                inputname.placeholder = 'Name Here...';
+                inputdegree.placeholder = 'Degree Here...';
+                inputcgpa.placeholder = 'CGPA Here...';
+
+                div.className = 'form-group';
+                inputname.className = 'form-control';
+
+                inputdegree.className = 'form-control';
+
+                inputcgpa.className = 'form-control';
+
+                div.appendChild(labelname);
+                div.appendChild(inputname);
+                div.appendChild(labeldegree);
+                div.appendChild(inputdegree);
+                div.appendChild(labelcgpa);
+                div.appendChild(inputcgpa);
+                div.appendChild(del);
+                document.forms['form'].appendChild(div);
+            }
+            function delfun() {
+                x = this.parentElement;
+                x.remove();
+            }
+        </script>
+    </body>
+</html>
